@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+
+        <template id="payphone_acquirer_button">
+            <form t-att-action="tx_url" method="get" target="_self">
+                <input type="hidden" name="paymentId" t-att-value="paymentId"/>
+                <button type="submit" width="100px"
+                        t-att-class="submit_class">
+                    <img t-if="not submit_txt"/>
+                    <span t-if="submit_txt">
+                        <t t-esc="submit_txt"/>
+                        <span class="fa fa-long-arrow-right"/>
+                    </span>
+                </button>
+            </form>
+        </template>
+
+        <record id="payphone_payment_acquirer" model="payment.acquirer">
+            <field name="name">PayPhone</field>
+            <field name="sequence">2</field>
+            <field name="provider">payphone</field>
+            <field name="state">test</field>
+            <field name="view_template_id" ref="payphone_acquirer_button"/>
+            <field name="image" type="base64"
+                   file="ateneo_payment_payphone/static/description/icon.png"/>
+            <field name="module_id" ref="base.module_ateneo_payment_payphone"/>
+            <field name="description" type="html">
+                <p>
+                    Payphone Payment GateWay.
+                </p>
+            </field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+
+    </data>
+</odoo>

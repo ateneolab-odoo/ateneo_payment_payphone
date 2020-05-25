@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+  
+  	<record id='ateneo_payment_acquirer_form' model='ir.ui.view'>
+		<field name='name'>ateneo.payment.acquirer.form</field>
+		<field name='model'>payment.acquirer</field>
+		<field name='inherit_id' ref='payment.acquirer_form' />
+		<field name='arch' type='xml'>
+			<group name="acquirer" position='inside'>
+               <field name="url_payphone" attrs="{'required':[('provider','=','payphone')]}"/>
+               <field name="token_payphone" attrs="{'required':[('provider','=','payphone')]}"/>
+			</group>
+		</field>
+	</record>
+  	
+  </data>
+</odoo>
